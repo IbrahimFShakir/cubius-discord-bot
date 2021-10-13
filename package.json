@@ -1,0 +1,27 @@
+{
+  "name": "cubius-discord-bot",
+  "version": "0.0.1",
+  "description": "Cubius bot, made with love for private (friends-only) discord servers.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IbrahimFShakir/cubius-discord-bot.git"
+  },
+  "keywords": [
+    "Discord",
+    "Bot",
+    "Cubius",
+    "Private",
+    "Group",
+    "Friends"
+  ],
+  "author": "IbrahimFShakir",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IbrahimFShakir/cubius-discord-bot/issues"
+  },
+  "homepage": "https://github.com/IbrahimFShakir/cubius-discord-bot#readme"
+}
