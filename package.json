@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Cubius bot, made with love for private discord servers.",
   "main": "index.js",
+  "engines": {
+    "node": "16.x"
+  },
   "scripts": {
     "bot-start": "node ./bot",
     "site-start": "node ./site/bin/www"
