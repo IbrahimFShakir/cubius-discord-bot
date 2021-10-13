@@ -27,6 +27,7 @@
   },
   "homepage": "https://github.com/IbrahimFShakir/cubius-discord-bot#readme",
   "dependencies": {
+    "discord.js": "^13.2.0",
     "dotenv": "^10.0.0"
   }
 }
