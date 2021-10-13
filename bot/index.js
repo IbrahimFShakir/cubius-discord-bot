@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const { Client, Intents } = require('discord.js');
 const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
 
@@ -9,4 +11,4 @@ client.on('interactionCreate', async interaction => {
 
 });
 
-client.login('ODk3NjY0ODcxODA0NTg4MDcy.YWY9jw.OIprDa1brKt2GXjd2XDP8IkD4qY');
+client.login(process.env.DISCORD_TOKEN);

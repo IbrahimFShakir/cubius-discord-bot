@@ -25,5 +25,8 @@
   "bugs": {
     "url": "https://github.com/IbrahimFShakir/cubius-discord-bot/issues"
   },
-  "homepage": "https://github.com/IbrahimFShakir/cubius-discord-bot#readme"
+  "homepage": "https://github.com/IbrahimFShakir/cubius-discord-bot#readme",
+  "dependencies": {
+    "dotenv": "^10.0.0"
+  }
 }
