@@ -7,8 +7,8 @@
     "node": "16.x"
   },
   "scripts": {
-    "bot-start": "node ./bot",
-    "site-start": "node ./site/bin/www"
+    "bot-start": "node ./app/bot",
+    "site-start": "node ./app/site/bin/www"
   },
   "repository": {
     "type": "git",
