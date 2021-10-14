@@ -4,15 +4,19 @@
  * Module dependencies.
  */
 
+require('dotenv').config();
 var app = require('../app');
-var debug = require('debug')('site:server');
+var bot = require('../bot/index');
+var debug = require('debug')('cubius-discord-bot:server');
 var http = require('http');
+
+bot.start();
 
 /**
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '5000');
+var port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
 /**
