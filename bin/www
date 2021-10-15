@@ -10,6 +10,7 @@ var bot = require('../bot/index');
 var debug = require('debug')('cubius-discord-bot:server');
 var http = require('http');
 
+//bot.registerCommmands();
 bot.start();
 
 /**
