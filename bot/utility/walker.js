@@ -1,17 +1,15 @@
-exports.walk = (path) => {
-    const fs = require('fs');
-    var files = [];
-    var fullPath = path;
-    fs.readdirSync(path).forEach(rPath => {
-        fullPath += (`/${rPath}`); // currently fixing this
-        if (fs.existsSync(fullPath)) {
-            if (fs.lstatSync(fullPath).isDirectory())
-                this.walk(fullPath);
-            else
-                files.push(fullPath);
+exports.walk = (givenPath, filelist = []) => {
+    var path = path || require('path');
+    var fs = fs || require('fs'), files = fs.readdirSync(givenPath);
+    filelist = filelist || [];
+
+    files.forEach(file => {
+        if (fs.statSync(path.join(givenPath, file)).isDirectory()) {
+            filelist = this.walk(path.join(givenPath, file), filelist);
+        }
+        else {
+            filelist.push(path.join(givenPath, file));
         }
     });
-    console.log(files);
-    console.log("FINNISH");
-    return files;
+    return filelist;
 }

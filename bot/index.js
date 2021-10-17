@@ -1,11 +1,12 @@
 exports.registerCommmands = () => {
     const { REST } = require('@discordjs/rest');
     const { Routes } = require('discord-api-types/v9');
-    
-    const commands = [{
-      name: 'ping',
-      description: 'Replies with Pong!'
-    }]; 
+
+    const commands = [];
+    require('./utility/walker').walk(require('path').join(__dirname, "/commands")).forEach(commandFiles => {
+      const command = require(commandFiles);
+      commands.push(command.data.toJSON());
+    });
     
     const rest = new REST({ version: '9' }).setToken(process.env.DISCORD_CLIENT_TOKEN);
     
@@ -25,19 +26,28 @@ exports.registerCommmands = () => {
     })();
 }
 
-exports.start = () => {
-    const { Client, Intents } = require('discord.js');
+exports.init = () => {
+    const { Client, Collection, Intents } = require('discord.js');
     const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
+
+    client.commands = new Collection();
+    require('./utility/walker').walk(require('path').join(__dirname, "/commands")).forEach(commandFile => {
+      const command = require(commandFile);
+      client.commands.set(command.data.name, command);
+    });
 
     client.once('ready', () => {
         console.log(`Logged in as ${client.user.tag}!`);
       });
       
-      client.on('interactionCreate', async interaction => {
+    client.on('interactionCreate', async interaction => {
         if (!interaction.isCommand()) return;
-      
-        const { checkCommand } = require ('./utility/handlers');
-        checkCommand(interaction, client);
+        const command = client.commands.get(interaction.commandName);
+        if (!command) return;
+        try { await command.execute(interaction); } 
+        catch (error) {
+          await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true })
+        };
       });
 
     client.login(process.env.DISCORD_CLIENT_TOKEN);
